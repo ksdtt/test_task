@@ -6,7 +6,7 @@
 
 ![ER-diagram](er-diagram.png)
 
-Также диаграмму можно посмотреть [здесь]([https://pages.github.com/](https://drive.google.com/file/d/1Oj5Bynor6z_cKa-MYC1-WDGlWHJY3d2F/view?usp=sharing).
+Также диаграмму можно посмотреть [здесь][https://pages.github.com/](https://drive.google.com/file/d/1Oj5Bynor6z_cKa-MYC1-WDGlWHJY3d2F/view?usp=sharing).
 
 *	Personal data – содержит информацию о клиентах банка.
 *	Passport data – содержит информацию о паспортных данных клиентов.
