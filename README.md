@@ -57,26 +57,21 @@ sql-запрос:
 from prettytable import PrettyTable
 import psycopg2
     
-"""если ввод из консоли данных"""
 def annuitent_plat(s, r, n):
-    """ годовая ставка / 12 мес. / 100%"""
-    r = r/12/100 
+    r = r/12/100 # годовая ставка / 12 мес. / 100%
 
-    """ежемесячный платёж"""
-    p = s*r*(1+r)**n/((1+r)**n - 1)
+    p = s*r*(1+r)**n/((1+r)**n - 1) # ежемесячный платёж
 
 
     table = PrettyTable()
     table.field_names = ["Месяц", 'Ежемесячный платёж', 'Основной долг', 'Долг по процентам', "Остаток основного долга"]
     for i in range(n):
-        """процент"""
-        persent = s*r
+        
+        persent = s*r # процент
 
-        """долг"""
-        debt = p - persent
+        debt = p - persent # долг
 
-        """основной долг"""
-        s = s - debt
+        s = s - debt # основной долг
 
         table.add_row([i+1, round(p, 2), round(debt, 2), round(persent, 2), abs(round(s, 2))])
     print(table)
@@ -96,14 +91,11 @@ def bd_data(id):
         cursor.execute(f'SELECT * FROM Parameters_application_form where id_param_app_form={id}')
         data = cursor.fetchall()
 
-        """ставка"""
-        r = float(data[0][3])
+        r = float(data[0][3]) # ставка
 
-        """сумма"""
-        s = float(data[0][4])
+        s = float(data[0][4]) # сумма
 
-        """срок в месяцах"""
-        n = int(data[0][5])
+        n = int(data[0][5]) # срок в месяцах
 
     except:
         print('Can`t establish connection to database\n')
