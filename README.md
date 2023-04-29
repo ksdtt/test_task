@@ -51,73 +51,7 @@ sql-запрос:
 
 В случае с получением данных из базы данных, то user, password, host, port, database получаются из текстового файла bd_connect.txt.
 
-Полный код программы приведён в файле [task3.py](https://github.com/ksdtt/test_task/blob/main/task3.py):
-    
-def annuitent_plat(s, r, n):
-    r = r/12/100 # годовая ставка / 12 мес. / 100%
-
-    p = s*r*(1+r)**n/((1+r)**n - 1) # ежемесячный платёж
-
-
-    table = PrettyTable()
-    table.field_names = ["Месяц", 'Ежемесячный платёж', 'Основной долг', 'Долг по процентам', "Остаток основного долга"]
-    for i in range(n):
-        
-        persent = s*r # процент
-
-        debt = p - persent # долг
-
-        s = s - debt # основной долг
-
-        table.add_row([i+1, round(p, 2), round(debt, 2), round(persent, 2), abs(round(s, 2))])
-    print(table)
-
-def bd_data(id):
-    with open('bd_connect.txt') as file:
-        user, password, host, port, database = file.readline().strip().split()
-    try:
-        connection = psycopg2.connect(user=user,
-                                  password=password,
-                                  host=host,
-                                  port=port,
-                                  database=database)
-        
-        cursor = connection.cursor()
-
-        cursor.execute(f'SELECT * FROM Parameters_application_form where id_param_app_form={id}')
-        data = cursor.fetchall()
-
-        r = float(data[0][3]) # ставка
-
-        s = float(data[0][4]) # сумма
-
-        n = int(data[0][5]) # срок в месяцах
-
-    except:
-        print('Can`t establish connection to database\n')
-
-    finally:
-        if connection:
-            cursor.close()
-            connection.close()
-            print("Соединение с PostgreSQL закрыто\n")
-            return (s, r, n)
-
-
-if int(input('Введите 1, если расчёт графика аннуитетных платежей с данными из консоли\n 2, если с данными из базы данных: ')) == 1:
-    s = float(input("Сумма кредита: "))
-    r = float(input("Ставка: "))
-    n = int(input("Срок (в месяцах): "))
-    print(f'Сумма кредита: {s} руб. \nСтавка: {r}% \nСрок: {n} месяцев\n')
-else:
-    id = int(input('Введите id заявки для расчёта: '))
-    data = bd_data(id)
-    s, r, n = data[0], data[1], data[2]
-
-    print(f'ID заявки: {id}\nСумма кредита: {s} руб. \nСтавка: {r}% \nСрок: {n} месяцев\n')
-
-
-annuitent_plat(s,r,n)
+Код приведён в файле [task3.py](https://github.com/ksdtt/test_task/blob/main/task3.py):
     
 Результат работы при вводе данных из консоли:
 входные данные:
