@@ -52,6 +52,7 @@ sql-запрос:
 В случае с получением данных из базы данных, то user, password, host, port, database получаются из текстового файла bd_connect.txt.
 
 Листинг программы приведён в файле [task3.py](https://github.com/ksdtt/test_task/blob/main/task3.py):
+
 from prettytable import PrettyTable
 import psycopg2
     
