@@ -51,11 +51,7 @@ sql-запрос:
 
 В случае с получением данных из базы данных, то user, password, host, port, database получаются из текстового файла bd_connect.txt.
 
-Листинг программы приведён в файле [task3.py](https://github.com/ksdtt/test_task/blob/main/task3.py):
-
-'''{python}
-from prettytable import PrettyTable
-import psycopg2
+Полный код программы приведён в файле [task3.py](https://github.com/ksdtt/test_task/blob/main/task3.py):
     
 def annuitent_plat(s, r, n):
     r = r/12/100 # годовая ставка / 12 мес. / 100%
@@ -121,7 +117,7 @@ else:
     print(f'ID заявки: {id}\nСумма кредита: {s} руб. \nСтавка: {r}% \nСрок: {n} месяцев\n')
 
 
-annuitent_plat(s,r,n)'''
+annuitent_plat(s,r,n)
     
 Результат работы при вводе данных из консоли:
 входные данные:
