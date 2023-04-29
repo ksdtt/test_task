@@ -53,6 +53,7 @@ sql-запрос:
 
 Листинг программы приведён в файле [task3.py](https://github.com/ksdtt/test_task/blob/main/task3.py):
 
+'''{python}
 from prettytable import PrettyTable
 import psycopg2
     
@@ -128,7 +129,7 @@ else:
     print(f'ID заявки: {id}\nСумма кредита: {s} руб. \nСтавка: {r}% \nСрок: {n} месяцев\n')
 
 
-annuitent_plat(s,r,n)
+annuitent_plat(s,r,n)'''
     
 Результат работы при вводе данных из консоли:
 входные данные:
